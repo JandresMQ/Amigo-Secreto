@@ -1,6 +1,5 @@
 let amigo = [];
 
-
 //Función para agregar amigos.
 
 function agregarAmigo() {
@@ -14,30 +13,36 @@ function agregarAmigo() {
       amigo.push(nombreAmigo);
       inputAmigo.value = "";
       inputAmigo.focus();
-      renderizarAmigos();
+      agregarAmigos();
 }  
-      
-function renderizarAmigos(){
+ // funcion para agregar amigos a la lista
+
+function agregarAmigos(){
     let listaAmigos = document.getElementById("listaAmigos");
     listaAmigos.innerHTML = "";
 
     for(let i = 0; i < amigo.length; i++){
-        let item = document.createElement("li");
-        item.textContent = amigo [i];
-        listaAmigos.appendChild(item);
+      let item = document.createElement("li");
+      item.textContent = amigo[i];
+      listaAmigos.appendChild(item);      
     }
 }
+//funcion para sortear amigos
 
 function sortearAmigo(){
     if(amigo.length === 0){
       alert("No Hay Amigos Para Sortear");
     return;
     }
-  let amigoSorteado = amigo[Math.floor(Math.random() * amigo.lenght)];
+    if(amigo.length < 3){
+      alert("minimo se necesitan 3 amigos");
+      return;
+    }
+  let amigoSorteado = amigo[Math.floor(Math.random() * amigo.length)];
   let resultado = document.getElementById("resultado");
-  resultado.innerHTML = `El Amigo Sorteado es: ${amigoSorteado}`;
-
-  //let limpiarLista = document.getElementById("listaAmigos");
-  //limpiarLista.innerHTML = "";
-
+  resultado.textContent = `El amigo sorteado es: ${amigoSorteado}`;
+  
+  let limpiarLista = document.getElementById("listaAmigos");
+  limpiarLista.innerHTML = "";
+   
 }
